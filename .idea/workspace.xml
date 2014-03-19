@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb8df61f-8519-4eba-b074-46deb4385379" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ExcelUtils.iws" />
@@ -653,12 +651,17 @@
       <workItem from="1395199003638" duration="11365000" />
       <workItem from="1395222347490" duration="557000" />
       <workItem from="1395224047140" duration="65000" />
-      <workItem from="1395224935748" duration="845000" />
+      <workItem from="1395224935748" duration="870000" />
     </task>
+    <task id="LOCAL-00001" summary="update readme.txt&#10;">
+      <created>1395226014824</created>
+      <updated>1395226014824</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12832000" />
+    <option name="totallyTimeSpent" value="12857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -706,6 +709,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="update readme.txt&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme.txt&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
