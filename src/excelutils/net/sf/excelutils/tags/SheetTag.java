@@ -20,16 +20,17 @@ package net.sf.excelutils.tags;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
+import net.sf.excelutils.ExcelException;
 import net.sf.excelutils.ExcelParser;
 import net.sf.excelutils.ExcelUtils;
 import net.sf.excelutils.WorkbookUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -50,7 +51,7 @@ public class SheetTag implements ITag {
 	/**
 	 * Parse #sheet detail in list by sheetName
 	 */
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		String sheetExpr = curCell.getStringCellValue();
 		StringTokenizer st = new StringTokenizer(sheetExpr, " ");
 
@@ -109,7 +110,7 @@ public class SheetTag implements ITag {
 					int sheetIndex = WorkbookUtils.getSheetIndex(wb, sheet);
 
 					// clone sheet
-					HSSFSheet cloneSheet = wb.cloneSheet(sheetIndex);
+					Sheet cloneSheet = wb.cloneSheet(sheetIndex);
 
 					// set cloneSheet name
 					int cloneSheetIndex = WorkbookUtils.getSheetIndex(wb, cloneSheet);
@@ -135,7 +136,7 @@ public class SheetTag implements ITag {
 		return new int[] { 0, -1, 0 };
 	}
 
-	private void setSheetName(Object context, HSSFWorkbook wb, int sheetIndex, String sheetName) {
+	private void setSheetName(Object context, Workbook wb, int sheetIndex, String sheetName) {
 		// set sheetName
 		if (!"".equals(sheetName)) {
 			Object o = ExcelParser.getValue(context, sheetName);

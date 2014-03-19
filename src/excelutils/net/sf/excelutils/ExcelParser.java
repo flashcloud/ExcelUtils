@@ -36,10 +36,10 @@ import org.apache.commons.beanutils.DynaClass;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.beanutils.LazyDynaBean;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -83,7 +83,7 @@ public class ExcelParser {
 	 * @param toRow the end
 	 * @return int skip number
 	 */
-	public static int parse(Object context, HSSFWorkbook wb, HSSFSheet sheet, int fromRow, int toRow) {
+	public static int parse(Object context, Workbook wb, Sheet sheet, int fromRow, int toRow) throws ExcelException {
 		int[] shift = new int[] { 0, 0, 0 }; // {SkipNum, ShiftNum, break flag}
 		int shiftCount = 0;
 
@@ -98,7 +98,7 @@ public class ExcelParser {
 			shift[0] = 0;
 			shift[1] = 0;
 			shift[2] = 0;
-			HSSFRow row = sheet.getRow(rownum);
+			Row row = sheet.getRow(rownum);
 			// set current row number
 			ExcelUtils.addValue(context, "currentRowNo", new Integer(rownum + 1));
 			if (null == row) {
@@ -107,11 +107,11 @@ public class ExcelParser {
 			}
 
 			for (short colnum = row.getFirstCellNum(); colnum <= row.getLastCellNum(); colnum++) {
-				HSSFCell cell = row.getCell(colnum, HSSFRow.RETURN_NULL_AND_BLANK);
+				Cell cell = row.getCell(colnum, Row.RETURN_NULL_AND_BLANK);
 				if (null == cell) {
 					continue;
 				}
-				if (cell.getCellType() != HSSFCell.CELL_TYPE_STRING) {
+				if (cell.getCellType() != Cell.CELL_TYPE_STRING) {
 					continue;
 				}
 				// if the cell is null then continue
@@ -345,7 +345,7 @@ public class ExcelParser {
 	 * @param context data object
 	 * @param cell excel cell
 	 */
-	public static void parseCell(Object context, HSSFSheet sheet, HSSFRow row, HSSFCell cell) {
+	public static void parseCell(Object context, Sheet sheet, Row row, Cell cell) {
 
 		String str = cell.getStringCellValue();
 		if (null == str || "".equals(str)) {
@@ -369,20 +369,20 @@ public class ExcelParser {
 		if (null != value) {
 			if (bJustExpr && "java.lang.Integer".equals(value.getClass().getName())) {
 				cell.setCellValue(Double.parseDouble(value.toString()));
-				cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+				cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			} else if (bJustExpr && "java.lang.Double".equals(value.getClass().getName())) {
 				cell.setCellValue(((Double) value).doubleValue());
-				cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+				cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			} else if (bJustExpr && "java.util.Date".equals(value.getClass().getName())) {
 				cell.setCellValue((Date) value);
 			} else if (bJustExpr && "java.lang.Boolean".equals(value.getClass().getName())) {
 				cell.setCellValue(((Boolean) value).booleanValue());
-				cell.setCellType(HSSFCell.CELL_TYPE_BOOLEAN);
+				cell.setCellType(Cell.CELL_TYPE_BOOLEAN);
 			} else if (bJustExpr && Number.class.isAssignableFrom(value.getClass())) {
 				cell.setCellValue(((Number) (value)).doubleValue());
-				cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+				cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 			} else {
-				// cell.setEncoding(HSSFWorkbook.ENCODING_UTF_16); POI3.2以上自动处理
+				// cell.setEncoding(Workbook.ENCODING_UTF_16); POI3.2以上自动处理
 				cell.setCellValue(value.toString());
 			}
 		} else {
@@ -391,18 +391,18 @@ public class ExcelParser {
 
 		// merge the cell that has a "!" character at the expression
 		if (row.getRowNum() - 1 >= sheet.getFirstRowNum() && bMerge) {
-			HSSFRow lastRow = WorkbookUtils.getRow(row.getRowNum() - 1, sheet);
-			HSSFCell lastCell = WorkbookUtils.getCell(lastRow, cell.getColumnIndex());
+			Row lastRow = WorkbookUtils.getRow(row.getRowNum() - 1, sheet);
+			Cell lastCell = WorkbookUtils.getCell(lastRow, cell.getColumnIndex());
 			boolean canMerge = false;
 			if (lastCell.getCellType() == cell.getCellType()) {
 				switch (cell.getCellType()) {
-				case HSSFCell.CELL_TYPE_STRING:
+				case Cell.CELL_TYPE_STRING:
 					canMerge = lastCell.getStringCellValue().equals(cell.getStringCellValue());
 					break;
-				case HSSFCell.CELL_TYPE_BOOLEAN:
+				case Cell.CELL_TYPE_BOOLEAN:
 					canMerge = lastCell.getBooleanCellValue() == cell.getBooleanCellValue();
 					break;
-				case HSSFCell.CELL_TYPE_NUMERIC:
+				case Cell.CELL_TYPE_NUMERIC:
 					canMerge = lastCell.getNumericCellValue() == cell.getNumericCellValue();
 					break;
 				}

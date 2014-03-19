@@ -2,6 +2,10 @@ ExcelUtils CHANGELOG
 ==========================
 http://excelutils.sourceforge.net
 
+Changes in version 2.1 (2014.03.19)
+*support poi-3.10-final
+*support Excel 2007+ (.xlsx)
+
 Changes in version 1.50 (2007.08.22)
 *add feature of parse ${list[index][index]} expression
 

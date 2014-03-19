@@ -61,10 +61,17 @@ public class ExcelResult extends WebWorkResultSupport {
 		response.setContentType(contentType);
 		response.setHeader("Accept-Ranges", "bytes");
 		String fileName = (String) request.getAttribute("attachment_filename");
+
+        String fileType = "";
+        if (location.endsWith(".xls"))
+            fileType = ".xls";
+        else if (location.endsWith(".xlsx"))
+            fileType = ".xlsx";
+
 		if (null != fileName && !"".equals(fileName)) {
-			response.setHeader("Content-Disposition", "attachment; filename=" + ExcelResult.encodingString(fileName, "GBK", "ISO-8859-1") + ".xls");
+			response.setHeader("Content-Disposition", "attachment; filename=" + ExcelResult.encodingString(fileName, "GBK", "ISO-8859-1") + fileType);
 		} else {
-			response.setHeader("Content-Disposition", "attachment; filename=" + System.currentTimeMillis() + ".xls");
+			response.setHeader("Content-Disposition", "attachment; filename=" + System.currentTimeMillis() + fileType);
 		}
 		InputStream in = null;
 		ByteArrayOutputStream buf = null;
@@ -78,7 +85,7 @@ public class ExcelResult extends WebWorkResultSupport {
 			Object context = ExcelManager.getInstance().buildContextObject(stack);
 
 			buf = new ByteArrayOutputStream();
-			ExcelUtils.export(in, context, buf);
+			ExcelUtils.export(in, context, buf, location);
 
 			response.setHeader("Content-Length", new Long(buf.size()).toString());
 			response.setContentLength((int) (buf.size()));

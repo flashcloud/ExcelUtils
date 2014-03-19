@@ -19,6 +19,7 @@ package net.sf.excelutils.tags;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
+import net.sf.excelutils.ExcelException;
 import net.sf.excelutils.ExcelParser;
 import net.sf.excelutils.ExcelUtils;
 import net.sf.excelutils.WorkbookUtils;
@@ -26,9 +27,10 @@ import net.sf.excelutils.WorkbookUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -48,7 +50,7 @@ public class ForeachTag implements ITag {
 
 	public static final String KEY_END = "#end";
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		int forstart = curRow.getRowNum();
 		int forend = -1;
 		int forCount = 0;
@@ -56,11 +58,11 @@ public class ForeachTag implements ITag {
 		boolean bFind = false;
 		LOG.debug("ForeachTag: start=" + forstart);
 		for (int rownum = forstart; rownum <= sheet.getLastRowNum(); rownum++) {
-			HSSFRow row = sheet.getRow(rownum);
+			Row row = sheet.getRow(rownum);
 			if (null == row)
 				continue;
 			for (short colnum = row.getFirstCellNum(); colnum <= row.getLastCellNum(); colnum++) {
-				HSSFCell cell = row.getCell(colnum, HSSFRow.RETURN_NULL_AND_BLANK);
+				Cell cell = row.getCell(colnum, Row.RETURN_NULL_AND_BLANK);
 				if (null == cell)
 					continue;
 				if (cell.getCellType() == HSSFCell.CELL_TYPE_STRING) {

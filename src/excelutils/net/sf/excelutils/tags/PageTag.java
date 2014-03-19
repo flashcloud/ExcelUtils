@@ -16,12 +16,13 @@
  */
 package net.sf.excelutils.tags;
 
+import net.sf.excelutils.ExcelException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  * <p>
@@ -38,7 +39,7 @@ public class PageTag implements ITag {
 
 	public static final String KEY_PAGE = "#page";
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		int rowNum = curRow.getRowNum();
 		LOG.debug("#page at rownum = " + rowNum);
 		sheet.setRowBreak(rowNum - 1);

@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.sf.excelutils.ExcelException;
 import net.sf.excelutils.ExcelParser;
 import net.sf.excelutils.WorkbookUtils;
 
@@ -31,10 +32,10 @@ import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 import bsh.EvalError;
@@ -56,21 +57,21 @@ public class IfTag implements ITag {
 
 	private Log LOG = LogFactory.getLog(IfTag.class);
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		int ifstart = curRow.getRowNum();
 		int ifend = -1;
 		int ifCount = 0;
 		String ifstr = "";
 		boolean bFind = false;
 		for (int rownum = ifstart; rownum <= sheet.getLastRowNum(); rownum++) {
-			HSSFRow row = sheet.getRow(rownum);
+			Row row = sheet.getRow(rownum);
 			if (null == row)
 				continue;
 			for (short colnum = row.getFirstCellNum(); colnum <= row.getLastCellNum(); colnum++) {
-				HSSFCell cell = row.getCell(colnum, HSSFRow.RETURN_NULL_AND_BLANK);
+				Cell cell = row.getCell(colnum, Row.RETURN_NULL_AND_BLANK);
 				if (null == cell)
 					continue;
-				if (cell.getCellType() == HSSFCell.CELL_TYPE_STRING) {
+				if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
 					String cellstr = cell.getStringCellValue();
 
 					// get the tag instance for the cellstr

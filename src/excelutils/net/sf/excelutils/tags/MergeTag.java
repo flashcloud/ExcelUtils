@@ -6,15 +6,16 @@ package net.sf.excelutils.tags;
 
 import java.util.StringTokenizer;
 
+import net.sf.excelutils.ExcelException;
 import net.sf.excelutils.ExcelParser;
 import net.sf.excelutils.WorkbookUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -31,7 +32,7 @@ public class MergeTag implements ITag {
 
 	public static String KEY_MERGE = "#merge";
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		String column = "";
 		String value = "";
 		String merge = curCell.getStringCellValue();
@@ -53,7 +54,7 @@ public class MergeTag implements ITag {
 		ExcelParser.parseCell(context, sheet, curRow, curCell);
 
 		// last row
-		HSSFRow lastRow = WorkbookUtils.getRow(curRow.getRowNum() - 1, sheet);
+		Row lastRow = WorkbookUtils.getRow(curRow.getRowNum() - 1, sheet);
 
 		// can merge flag
 		boolean canMerge = true;
@@ -66,17 +67,17 @@ public class MergeTag implements ITag {
 
 			// compare the cell
 			if (curRow.getRowNum() - 1 >= sheet.getFirstRowNum()) {
-				HSSFCell lastCell = WorkbookUtils.getCell(lastRow, columnIndex);
-				HSSFCell compCell = WorkbookUtils.getCell(curRow, columnIndex);
+				Cell lastCell = WorkbookUtils.getCell(lastRow, columnIndex);
+				Cell compCell = WorkbookUtils.getCell(curRow, columnIndex);
 				if (lastCell.getCellType() == compCell.getCellType()) {
 					switch (compCell.getCellType()) {
-					case HSSFCell.CELL_TYPE_STRING:
+					case Cell.CELL_TYPE_STRING:
 						canMerge &= lastCell.getStringCellValue().equals(compCell.getStringCellValue());
 						break;
-					case HSSFCell.CELL_TYPE_BOOLEAN:
+					case Cell.CELL_TYPE_BOOLEAN:
 						canMerge &= lastCell.getBooleanCellValue() == compCell.getBooleanCellValue();
 						break;
-					case HSSFCell.CELL_TYPE_NUMERIC:
+					case Cell.CELL_TYPE_NUMERIC:
 						canMerge &= lastCell.getNumericCellValue() == compCell.getNumericCellValue();
 						break;
 					default:

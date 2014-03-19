@@ -22,6 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import net.sf.excelutils.ExcelException;
 import net.sf.excelutils.ExcelParser;
 import net.sf.excelutils.ExcelUtils;
 import net.sf.excelutils.WorkbookUtils;
@@ -30,10 +31,10 @@ import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -51,7 +52,7 @@ public class EachTag implements ITag {
 
 	public static final String KEY_EACH = "#each";
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		String expr = "";
 		String each = curCell.getStringCellValue();
 
@@ -167,23 +168,23 @@ public class EachTag implements ITag {
 					}
 				}
 
-				HSSFCell cell = WorkbookUtils.getCell(curRow, eachPos);
+				Cell cell = WorkbookUtils.getCell(curRow, eachPos);
 
 				// shift the after cell
 				if (index > 0) {
 					WorkbookUtils.shiftCell(sheet, curRow, cell, 1, rowMerged);
 				}
 				if (width > 1) {
-					HSSFCell nextCell = WorkbookUtils.getCell(curRow, eachPos + 1);
+					Cell nextCell = WorkbookUtils.getCell(curRow, eachPos + 1);
 					WorkbookUtils.shiftCell(sheet, curRow, nextCell, width - 1, rowMerged);
 				}
 
 				// copy the style of curCell
 				for (int rownum = curRow.getRowNum(); rownum < curRow.getRowNum() + rowMerged; rownum++) {
 					for (int i = 0; i < width; i++) {
-						HSSFRow r = WorkbookUtils.getRow(rownum, sheet);
-						HSSFCell c = WorkbookUtils.getCell(r, eachPos + i);
-						HSSFCell cc = WorkbookUtils.getCell(r, curCell.getColumnIndex());
+						Row r = WorkbookUtils.getRow(rownum, sheet);
+						Cell c = WorkbookUtils.getCell(r, eachPos + i);
+						Cell cc = WorkbookUtils.getCell(r, curCell.getColumnIndex());
 						c.setCellStyle(cc.getCellStyle());
 					}
 				}

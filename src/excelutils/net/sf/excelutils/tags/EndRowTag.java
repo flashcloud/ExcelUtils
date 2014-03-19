@@ -4,12 +4,13 @@
  */
 package net.sf.excelutils.tags;
 
+import net.sf.excelutils.ExcelException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  * <p>
@@ -27,7 +28,7 @@ public class EndRowTag implements ITag {
 
 	public static final String KEY_ENDCOLUMN = "#endColumn";
 
-	public int[] parseTag(Object context, HSSFWorkbook wb, HSSFSheet sheet, HSSFRow curRow, HSSFCell curCell) {
+	public int[] parseTag(Object context, Workbook wb, Sheet sheet, Row curRow, Cell curCell) throws ExcelException {
 		// remove the rowBreaks after #endRow
 		int breaks[] = sheet.getRowBreaks();
 		for (int i = 0; null != breaks && i < breaks.length; i++) {
@@ -38,7 +39,7 @@ public class EndRowTag implements ITag {
 		LOG.debug("EndRowTag at " + curRow.getRowNum());
 		// remove the blank row after #endRow
 		for (int rownum = sheet.getLastRowNum(); rownum > curRow.getRowNum(); rownum--) {
-			HSSFRow row = sheet.getRow(rownum);
+			Row row = sheet.getRow(rownum);
 			sheet.removeRow(row);
 		}
 
