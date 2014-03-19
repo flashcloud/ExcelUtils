@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<tables>
+		<table nick="标题1" name="details" class="com.ky.ds.utils.Detail">
+			<columns>
+				<column nick="列1" name="master.column1" />
+				<column nick="列2" name="master.column2" />
+				<column nick="列3" name="master.column3" />
+				<column nick="列4" name="master.column4" />
+				<column nick="列5" name="master.column5" />
+				<column nick="列6" name="master.column6" />
+				<column nick="明细1" name="detail1" />
+				<column nick="明细2" name="detail2" />
+			</columns>
+		</table>
+		<table nick="标题2" name="master" class="com.ky.ds.utils.Master">
+			<columns>
+				<column nick="列1" name="column1" />
+				<column nick="列2" name="column2" />
+				<column nick="列3" name="column3" />
+				<column nick="列4" name="column4" />
+				<column nick="列5" name="column5" />
+				<column nick="列6" name="column6" />
+			</columns>
+		</table>
+	</tables>
+</config>

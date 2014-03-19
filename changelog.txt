@@ -1,0 +1,113 @@
+ExcelUtils CHANGELOG
+==========================
+http://excelutils.sourceforge.net
+
+Changes in version 1.50 (2007.08.22)
+*add feature of parse ${list[index][index]} expression
+
+Changes in version 1.49 (2007.04.26)
+*fix #+space bug when search tagName
+
+Changes in version 1.48 (2006.10.13)
++add #merge for merge cell by compare other cell value
+
+Changes in version 1.47 (2006.09.10)
+*modify IfTag, support all java grammer.
+
+Changes in version 1.46 (2006.08.22)
+*modify ExcelResult, set response ContentLength
+*fix EachTag NullPointException
++add #sheet tag for generate multi sheet
+
+Changes in version 1.45 (2006.03.23)
+*set the cell type by the value.
+*fix a bug with setPrintArea, it remove end Row error.
+
+Changes in version 1.44 (2006.01.05)
+*fix a bug with setPrintArea
+*#endRow tag with setPrintArea
+*at #endRow of last Column must set a string to tell excelutils PrintArea
+
+Changes in version 1.43 (2006.01.04)
+*fix a blank page bug for #page
+*remove #page row for blank page
+
+Changes in version 1.42 (2005.12.3)
+*add endRow tag to remove all rows after #endRow
+*fix a blank page bug for #page
+
+Changes in version 1.41 (2005.12.3)
+*add a key on at #each tag for each model by on ${keys} list
+
+Changes in version 1.4 (2005.11.2)
+*add IfTag for if condition, condition expression support for beanshell
+
+
+Changes in version 1.31 (2005.10.28)
+*add PageTag for split page (your sheet must have a split char first)
+
+
+Changes in version 1.3 (2005.07.11)
+*add synchronized keyword for threadsafe of the registerTagPackage method
+*fix export method to clear default context after finished
+*add OgnlDynaBean class
+*add OgnlDynaClass class
+*remove OgnlValueStackShadowMap class
+*modify ExcelResult to add default content to context
+*fix an EachTag bug
+*fix default Context bug, different request can be same thread Id, ThreadLocal
+ don't get different context in different request, set the default context null
+ when it was used(in export method and ExcelResult.doExecute)
+*add export method to support real path file
+
+
+Changes in version 1.2 (2005.07.10)
+*modify #each tag to shift after the tag cell
+
+Changes in version 1.1 (2005.07.08)
+*add #formula tag to support excel formula
+*fix POI package to support chinese character in formula
+*modify #each tag to support merge cell and
+*modify #each tag to support Collection,Array Model
+*fix WorkbookUtils.copyRow to copy merged region
+
+Changes in version 1.0 (2005.07.06)
+*add #call tag to call method in a template
+*refactor the package
+*fix copyRow function not copy row height
+
+Changes in version 0.9 (2005.07.01)
+*fix some bugs
+*refactor packages
+
+Changes in version 0.8 (2005.06.25)
+*add a parseStr method to parse complex expression
+
+Changes in version 0.7 (2005.06.24)
+*create a webwork result class name ExcelResult
+*fix some bugs
+
+Changes in version 0.6 (2005.06.22)
+*create a ITag interface
+*create a ForeachTag class to parse #foreach
+*create a EachTag clas to parse #each
+*create a SumTag class to parse #sum
+*you can custom a tag by implements ITag,
+ for example, #foo tag will be parse by FooTag class
+ you must place the FooTag class in net.sf.excelutils.tags package
+
+Changes in version 0.5 (2005.06.21)
+*add parseWorkbook method in ExcelUtils class
+
+Changes in version 0.4 (2005.06.20)
+*add #sum key to sum the collection
+
+Changes in version 0.3 (2005.06.19)
+*add nesting for expression
+
+Changes in version 0.2 (2005.06.18)
+*add nesting #foreach function
+
+Changes in version 0.1 (2005.06.17)
+*release first
+

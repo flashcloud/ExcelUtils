@@ -1,0 +1,120 @@
+<!-- Copyright (c) 2002 by ObjectLearn. All Rights Reserved. -->
+<project name="builder" default="dist" basedir=".">
+	<property name="src.excelutils" value="src/excelutils" />
+	<property name="src.demo" value="src/demo" />
+	<property name="doc" value="doc" />	
+	<property name="lib" value="lib" />
+	<property name="dist" value="dist"/>
+	<property name="deploy" value="deploy" />
+	<property name="webapp" value="webapp" />
+	<property name="web-inf" value="${webapp}/WEB-INF" />
+	<property name="web-inf.classes" value="${web-inf}/classes" />
+	<property name="web-inf.lib" value="${web-inf}/lib" />
+	<property name="distribution" value="excelutils" />
+	<property name="distribution1" value="ExcelUtils" />	
+	<property name="version" value="2.00" />
+	<property name="user" value="rainsoft,jokeway" />
+
+	<target name="compile">
+		<mkdir dir="${web-inf.classes}" />
+		<javac srcdir="${src.excelutils};${src.demo}" destdir="${web-inf.classes}" debug="on">
+			<classpath>
+				<fileset dir="${web-inf.lib}">
+					<include name="**/*.jar" />
+					<exclude name="${distribution}*.jar" />
+				</fileset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+
+		<copy todir="${web-inf.classes}" overwrite="true">
+			<fileset dir="${src.excelutils}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+			<fileset dir="${src.demo}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="jar">
+		<delete file="${distribution}.jar" failonerror="false" />
+		<jar destfile="${distribution}.jar" basedir="${web-inf.classes}" excludes="net/sf/excelutils/demo,net/sf/excelutils/demo/**/*,*.properties,*.xml,*.jpg,xls">
+			<manifest>
+				<attribute name="Built-By" value="${user}" />
+				<attribute name="ExcelUtils-Version" value="${version}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="javadoc">
+		<delete dir="${doc}"/>
+		<mkdir dir="${doc}"/>
+		<javadoc sourcepath="${src.excelutils}" destdir="${doc}" windowtitle="ExcelUtils"
+			 additionalparam="-breakiterator" source="1.5" access="package" author="true" version="true" use="true"
+			 defaultexcludes="true" encoding="UTF-8">
+			
+			<doctitle><![CDATA[<h1>ExcelUtils API Documentation</h1>]]></doctitle>
+			<bottom><![CDATA[Copyright (C) 200３-2006 The ExcelUtils Project.]]></bottom>
+			
+			<classpath>
+				<fileset dir="${web-inf.lib}">
+					<include name="**/*.jar" />
+					<exclude name="${distribution}*.jar" />
+				</fileset>
+				<fileset dir="${lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+			
+			<packageset dir="${src.excelutils}">
+				<include name="net/sf/excelutils/**"/>
+			</packageset>
+					
+			<link href="http://www.opensymphony.com/xwork/api" />
+			<link href="http://www.opensymphony.com/webwork/api" />
+			<link href="http://www.opensymphony.com/ognl/api" />
+			<link href="http://java.sun.com/j2ee/1.5/docs/api" />
+			<link href="http://www.opensymphony.com/oscore/api" />
+			<link href="http://jakarta.apache.org/poi/apidocs" />
+			<link href="http://jakarta.apache.org/commons/beanutils/apidocs/" />
+		</javadoc>
+	</target>
+
+	<target name="dist" depends="compile,jar,javadoc">
+		<delete dir="${dist}"/>
+		<mkdir dir="${dist}"/>
+		<zip zipfile="${dist}/${distribution1}-${version}.zip">
+			<fileset dir="./">
+				<include name="**"/>
+				<exclude name=".*"/>
+				<exclude name="**/CVS"/>
+				<exclude name="${dist}"/>
+			</fileset>
+		</zip>
+		<copy tofile="${dist}/${distribution}-${version}.jar" overwrite="true">
+			<fileset file="${distribution}.jar"/>
+		</copy>
+	</target>
+	
+	<target name="war">
+		<mkdir dir="${deploy}" />
+		<war destfile="${deploy}/${distribution}.war" webxml="${web-inf}/web.xml" excludes="${web-inf}/web.xml" basedir="${webapp}">
+			<manifest>
+				<attribute name="Built-By" value="${user}" />
+				<attribute name="ExcelUtils-Version" value="${version}" />
+			</manifest>
+		</war>
+	</target>
+
+	<target name="clean">
+		<delete failonerror="false" includeemptydirs="true">
+			<fileset dir="${web-inf.classes}" />
+		</delete>
+	</target>
+</project>

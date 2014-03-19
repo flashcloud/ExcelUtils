@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <action-mappings>
+    <action path="/ExcelReport" scope="request" type="net.sf.excelutils.demo.action.ExcelReportAction">
+      <forward name="success" path="/index.jsp" />
+    </action>
+    <action path="/TestReport" scope="request" type="net.sf.excelutils.demo.action.TestReportAction">
+      <forward name="success" path="/index.jsp" />
+    </action>    
+  </action-mappings>
+</struts-config>

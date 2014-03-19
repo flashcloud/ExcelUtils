@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<tables>
+		<table nick="报价主表" name="master" table="ZZZ_TEST_MASTER">
+			<columns>
+				<column nick="ID" name="ID" default="hibernate_sequence.nextval"/>
+				<column nick="主单号" name="MASTER_NO" primary="true" default="lpad(hibernate_sequence.nextval, 15, '0')" />
+				<column nick="主列1" name="column1" type="string" length="200" />
+				<column nick="主列2" name="column2" not-null="true" />
+				<column nick="最后更新时间" name="LAST_UPDATED_TIME" update="true" default="current_timestamp"/>
+				<column nick="最后更新人" name="LAST_UPDATED_BY" update="true" default="'*SYSADM'"/>			
+			</columns>
+		</table>
+		
+
+		<table nick="报价主从表" name="detail" master="master" table="ZZZ_TEST_DETAIL">
+			<sqls>
+				<post-sql>
+					update zzz_test_detail set last_updated_by=$P{DETAIL_NO}
+					  where detail_no=$P{DETAIL_NO}
+				</post-sql>
+			</sqls>
+			<columns>
+				<!-- type=string|number|date|bool -->
+				<column nick="ID" name="ID" default="hibernate_sequence.nextval"/>
+				<column nick="主单号" name="MASTER_NO" primary="true" default="lpad(hibernate_sequence.nextval, 15, '0')" />
+				<column nick="明细单号" name="DETAIL_NO" primary="true" default="lpad(hibernate_sequence.nextval, 15, '0')" />
+				<column nick="明细列1" name="column1" insert-only="true" not-null="true"  type="number" max="10000" min="0"/>
+				<column nick="明细列2" name="column2" enumCheck="select 1 from acl_basecode where type='PAGETYPE' and code=?" />
+				<column nick="明细列3" name="column3" not-null="true"  type="date"/>
+				<column nick="最后更新时间" name="LAST_UPDATED_TIME" update="true" default="current_timestamp"/>
+				<column nick="最后更新人" name="LAST_UPDATED_BY" update="true" default="'*SYSADM'"/>							
+			</columns>
+		</table>		
+								
+	</tables>
+</config>
