@@ -19,27 +19,27 @@ It uses excel and template language's profit to make web reports easily.
 After my hardwork, the parser is finished finally, in which report is exported by Excel Template.
 It's funtions include:
 
- 1¡¢${model.name} means getting property of the name from the model object.
- 2¡¢${!model.name} means that last cell and this cell merge if model.name value equals last cell value.
- 3¡¢#foreach model in ${list}£¬means that iterate list£¬modelId is implied index of the list.
- 4¡¢#each ${model} ${width1},${width2}£¬model can be a Map,JavaBean,Collection or Array object, #each key 
+ 1. ${model.name} means getting property of the name from the model object.
+ 2. ${!model.name} means that last cell and this cell merge if model.name value equals last cell value.
+ 3. #foreach model in ${list}ï¿½ï¿½means that iterate listï¿½ï¿½modelId is implied index of the list.
+ 4. #each ${model} ${width1},${width2}ï¿½ï¿½model can be a Map,JavaBean,Collection or Array object, #each key 
     will show all property of the model.${width?} means merge ${width?} cells. If only one 
     width, all property use the same width. If more than one, use the witdh in order, not set will use "1".
- 5¡¢${list[0].name} means get the first object from list, then read the property of name.
- 6¡¢${map(key)} get the value from the map by the key name.
- 7¡¢${list[${index}].name} [] can be a variable.
- 8¡¢${map(${key})} () can be a vriable.
- 9¡¢#sum qty on ${list} where name like/=str sum qty on ${list} collection by where condition.
-10¡¢In net.sf.excelutils.tags Package, you can implement ITag to exentd Tag key. eg, FooTag will parse #foo.
-11¡¢ExcelResult for webwork.
-12¡¢${model${index}} support.
-13¡¢#call service.method("str", ${name}) call a method
-14¡¢#formual SUM(C${currentRowNo}:F${currentRowNo}) means output excel formula SUM(C?:F?) ? means currentRowNo. 
+ 5. ${list[0].name} means get the first object from list, then read the property of name.
+ 6. ${map(key)} get the value from the map by the key name.
+ 7. ${list[${index}].name} [] can be a variable.
+ 8. ${map(${key})} () can be a vriable.
+ 9. #sum qty on ${list} where name like/=str sum qty on ${list} collection by where condition.
+10. In net.sf.excelutils.tags Package, you can implement ITag to exentd Tag key. eg, FooTag will parse #foo.
+11. ExcelResult for webwork.
+12. ${model${index}} support.
+13. #call service.method("str", ${name}) call a method
+14. #formual SUM(C${currentRowNo}:F${currentRowNo}) means output excel formula SUM(C?:F?) ? means currentRowNo. 
 
                                   
 dependency library:
 
-poi-2.5.1.jar (required)                                  
+poi-3.5.jar (required)
 commons-beanutils.jar (required)
 commons-digester.jar (required)
 commons-logging.jar (required)

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb8df61f-8519-4eba-b074-46deb4385379" name="Default" comment="" />
+    <list default="true" id="cb8df61f-8519-4eba-b074-46deb4385379" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="ExcelUtils.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,37 +68,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ExcelUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/excelutils/net/sf/excelutils/ExcelUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="24" selection-start="6799" selection-end="6799" vertical-scroll-proportion="0.0" vertical-offset="6966" max-vertical-offset="9747">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExcelResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/excelutils/net/sf/excelutils/webwork/ExcelResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="14" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="1310" max-vertical-offset="2646">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changelog.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="changelog.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changelog.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="39" selection-start="708" selection-end="708" vertical-scroll-proportion="0.7758621" vertical-offset="0" max-vertical-offset="3321">
+            <state line="25" column="39" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3321">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="xwork.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/demo/xwork.xml">
+      <file leaf-file-name="readme.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="57" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="702">
+            <state line="41" column="7" selection-start="2090" selection-end="2090" vertical-scroll-proportion="1.2413793" vertical-offset="135" max-vertical-offset="1566">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="660" column="0" selection-start="32349" selection-end="32349" vertical-scroll-proportion="0.0" vertical-offset="17535" max-vertical-offset="31590">
               <folding />
             </state>
           </provider>
@@ -186,6 +184,9 @@
         <option value="$PROJECT_DIR$/src/excelutils/net/sf/excelutils/ExcelParser.java" />
         <option value="$PROJECT_DIR$/src/excelutils/net/sf/excelutils/webwork/ExcelResult.java" />
         <option value="$PROJECT_DIR$/changelog.txt" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.idea/encodings.xml" />
+        <option value="$PROJECT_DIR$/readme.txt" />
       </list>
     </option>
   </component>
@@ -652,12 +653,12 @@
       <workItem from="1395199003638" duration="11365000" />
       <workItem from="1395222347490" duration="557000" />
       <workItem from="1395224047140" duration="65000" />
-      <workItem from="1395224935748" duration="362000" />
+      <workItem from="1395224935748" duration="845000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12349000" />
+    <option name="totallyTimeSpent" value="12832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -677,6 +678,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34182099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5005549" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -689,7 +691,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3294753" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34182099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -718,27 +719,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/excelutils/net/sf/excelutils/WorkbookUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="35" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14067">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/excelutils/net/sf/excelutils/ExcelUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="24" selection-start="6799" selection-end="6799" vertical-scroll-proportion="0.0" vertical-offset="6966" max-vertical-offset="9747">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/excelutils/net/sf/excelutils/webwork/ExcelResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="14" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="1755" max-vertical-offset="2646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/demo/xwork.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="57" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="702">
@@ -1061,9 +1041,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/changelog.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="39" selection-start="708" selection-end="708" vertical-scroll-proportion="0.7758621" vertical-offset="0" max-vertical-offset="3321">
+        <state line="25" column="39" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3321">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="660" column="0" selection-start="32349" selection-end="32349" vertical-scroll-proportion="0.0" vertical-offset="17535" max-vertical-offset="31590">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="60" selection-start="166" selection-end="166" vertical-scroll-proportion="0.15517241" vertical-offset="0" max-vertical-offset="870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="7" selection-start="2090" selection-end="2090" vertical-scroll-proportion="1.2413793" vertical-offset="135" max-vertical-offset="1566">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>
