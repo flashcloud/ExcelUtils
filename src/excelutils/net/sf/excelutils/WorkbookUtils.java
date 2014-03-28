@@ -30,10 +30,7 @@ import javax.servlet.ServletContext;
 import net.sf.excelutils.tags.EndRowTag;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -65,10 +62,7 @@ public class WorkbookUtils {
 		Workbook wb = null;
 		try {
 			in = ctx.getResourceAsStream(config);
-            if (config.endsWith(".xls"))
-			    wb = new HSSFWorkbook(in);
-            else if (config.endsWith(".xlsx"))
-                wb = new XSSFWorkbook(in);
+            wb = WorkbookFactory.create(in);
 		} catch (Exception e) {
 			throw new ExcelException("File" + config + "not found," + e.getMessage());
 		} finally {
@@ -92,12 +86,7 @@ public class WorkbookUtils {
 		Workbook wb = null;
 		try {
 			in = new FileInputStream(fileName);
-            if (fileName.endsWith(".xls"))
-			    wb = new HSSFWorkbook(in);
-            else  if (fileName.endsWith(".xlsx"))
-                wb = new XSSFWorkbook(in);
-            else
-                throw new ExcelException("not supported file format!");
+            wb = WorkbookFactory.create(in);
 		} catch (Exception e) {
 			throw new ExcelException("File" + fileName + "not found" + e.getMessage());
 		} finally {
@@ -116,15 +105,10 @@ public class WorkbookUtils {
 	 * @return Workbook
 	 * @throws ExcelException
 	 */
-	public static Workbook openWorkbook(InputStream in, String fileName) throws ExcelException {
+	public static Workbook openWorkbook(InputStream in) throws ExcelException {
 		Workbook wb = null;
 		try {
-            if (fileName.endsWith(".xls"))
-			    wb = new HSSFWorkbook(in);
-            else  if (fileName.endsWith(".xlsx"))
-                wb = new XSSFWorkbook(in);
-            else
-                throw new ExcelException("not supported file format!");
+            wb = WorkbookFactory.create(in);
 		} catch (Exception e) {
 			throw new ExcelException(e.getMessage());
 		}

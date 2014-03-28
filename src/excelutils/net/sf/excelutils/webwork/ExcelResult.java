@@ -85,7 +85,7 @@ public class ExcelResult extends WebWorkResultSupport {
 			Object context = ExcelManager.getInstance().buildContextObject(stack);
 
 			buf = new ByteArrayOutputStream();
-			ExcelUtils.export(in, context, buf, location);
+			ExcelUtils.export(in, context, buf);
 
 			response.setHeader("Content-Length", new Long(buf.size()).toString());
 			response.setContentLength((int) (buf.size()));

@@ -186,9 +186,9 @@ public class ExcelUtils {
 	 * @param out
 	 * @throws ExcelException
 	 */
-	public static void export(InputStream inputStream, Object context, OutputStream out, String templateLocation) throws ExcelException {
+	public static void export(InputStream inputStream, Object context, OutputStream out) throws ExcelException {
 		try {
-			Workbook wb = WorkbookUtils.openWorkbook(inputStream, templateLocation);
+			Workbook wb = WorkbookUtils.openWorkbook(inputStream);
 			parseWorkbook(context, wb);
 			wb.write(out);
 		} catch (Exception e) {
