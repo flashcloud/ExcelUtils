@@ -96,6 +96,21 @@ public class ExcelUtils {
 		}
 	}
 
+    /**
+   	 * parse the excel template and output excel to outputStream in default context.
+   	 *
+   	 * @param in
+   	 * @param out
+   	 * @throws ExcelException
+   	 */
+   	public static void export(InputStream in, OutputStream out) throws ExcelException {
+   		try {
+   			export(in, getContext(), out);
+   		} catch (Exception e) {
+   			throw new ExcelException("export excel error: ", e);
+   		}
+   	}
+
 	/**
 	 * parse the excel template in a sheet and output excel to outputStream in default context.
 	 * 

@@ -2,6 +2,9 @@ ExcelUtils CHANGELOG
 ==========================
 http://excelutils.sourceforge.net
 
+Changes in version 2.1.1 (2014.03.28)
+*add export(InputStream, OutputStream) API
+
 Changes in version 2.1 (2014.03.19)
 *support poi-3.10-final
 *support Excel 2007+ (.xlsx)
