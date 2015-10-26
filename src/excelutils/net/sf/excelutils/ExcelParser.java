@@ -36,10 +36,7 @@ import org.apache.commons.beanutils.DynaClass;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.commons.beanutils.LazyDynaBean;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
 /**
@@ -414,6 +411,70 @@ public class ExcelParser {
 			}
 		}
 
+	}
+
+	/**
+	 * parse the header
+	 * @param context
+	 * @param sheet
+	 */
+	public static void parseHeader(Object context, Sheet sheet) {
+		Header header = sheet.getHeader();
+		String content = null;
+		Object value = null;
+
+		content = header.getLeft();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				header.setLeft(value.toString());
+		}
+
+		content = header.getCenter();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				header.setCenter(value.toString());
+		}
+
+		content = header.getRight();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				header.setRight(value.toString());
+		}
+	}
+
+	/**
+	 * parse the footer
+	 * @param context
+	 * @param sheet
+	 */
+	public static void parseFooter(Object context, Sheet sheet) {
+		Footer footer = sheet.getFooter();
+		String content = null;
+		Object value = null;
+
+		content = footer.getLeft();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				footer.setLeft(value.toString());
+		}
+
+		content = footer.getCenter();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				footer.setCenter(value.toString());
+		}
+
+		content = footer.getRight();
+		if (null != content && !("".equals(content))) {
+			value = parseStr(context, content);
+			if (null != value)
+				footer.setRight(value.toString());
+		}
 	}
 
 	/**

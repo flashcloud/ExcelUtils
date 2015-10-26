@@ -272,6 +272,8 @@ public class ExcelUtils {
 	public static void parseSheet(Object context, Workbook wb, Sheet sheet) throws ExcelException {
 		try {
 			ExcelParser.parse(context, wb, sheet, sheet.getFirstRowNum(), sheet.getLastRowNum());
+			ExcelParser.parseHeader(context, sheet);
+			ExcelParser.parseFooter(context, sheet);
 			try {
 				// remove the last #page
 				int breaks[] = sheet.getRowBreaks();

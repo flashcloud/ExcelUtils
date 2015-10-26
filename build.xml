@@ -12,8 +12,8 @@
 	<property name="web-inf.lib" value="${web-inf}/lib" />
 	<property name="distribution" value="excelutils" />
 	<property name="distribution1" value="ExcelUtils" />	
-	<property name="version" value="2.1.1" />
-	<property name="user" value="rainsoft,jokeway" />
+	<property name="version" value="2.2.0" />
+	<property name="user" value="rainsoft,jokeway,flashcloud" />
 
 	<target name="compile">
 		<mkdir dir="${web-inf.classes}" />
