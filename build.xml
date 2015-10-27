@@ -57,7 +57,7 @@
 		<mkdir dir="${doc}"/>
 		<javadoc sourcepath="${src.excelutils}" destdir="${doc}" windowtitle="ExcelUtils"
 			 additionalparam="-breakiterator" source="1.5" access="package" author="true" version="true" use="true"
-			 defaultexcludes="true" encoding="UTF-8">
+			 defaultexcludes="true" charset="UTF-8" encoding="UTF-8" docencoding="UTF-8">
 			
 			<doctitle><![CDATA[<h1>ExcelUtils API Documentation</h1>]]></doctitle>
 			<bottom><![CDATA[Copyright (C) 200３-2006 The ExcelUtils Project.]]></bottom>
